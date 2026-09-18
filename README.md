@@ -41,7 +41,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máqu
 Abra o terminal e clone o projeto:
 
 ```bash
-git clone https://github.com/seu-usuario/pareamento_switab_network_science.git
+git clone https://github.com/lhaislla/pareamento_switab_network_science
 cd pareamento_switab_network_science
 ```
 
