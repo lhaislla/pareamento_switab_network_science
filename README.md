@@ -37,7 +37,7 @@ O projeto é desenvolvido em **Python**, utilizando as seguintes bibliotecas pri
 Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina utilizando o terminal do VS Code.
 
 ```
-### 1. Clonar o Repositório
+### Clonar o Repositório
  
 
 Abra o terminal e clone o projeto:
