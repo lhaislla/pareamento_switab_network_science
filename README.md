@@ -32,11 +32,12 @@ O projeto é desenvolvido em **Python**, utilizando as seguintes bibliotecas pri
 ├── README.md           # Documentação do projeto
 └── requirements.txt    # Dependências do projeto ´´´
 
+```
 ## ⚙️ Tutorial de Instalação e Execução
 
 Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina utilizando o terminal do VS Code.
 
-```
+
 ### Clonar o Repositório
  
 
