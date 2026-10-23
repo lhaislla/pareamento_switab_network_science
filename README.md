@@ -4,7 +4,8 @@ Repositório dedicado ao desenvolvimento do projeto de pesquisa voltado à model
 
 ## 📊 Apresentação (Slides)
 Você pode acompanhar a estruturação e os slides da pesquisa através do link oficial no Canva:
-* **[Acessar Apresentação no Canva](https://canva.link/gdvcyr9c82roieo)**
+* **[Acessar Apresentação no Canva - 1° entrega](https://canva.link/gdvcyr9c82roieo)**
+* **[Acessar Apresentação no Canva - 2° entrega](https://canva.link/yzhk69u9ns8glf9)**
 
 ## 🎯 Sobre o Projeto
 
