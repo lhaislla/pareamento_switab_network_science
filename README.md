@@ -36,6 +36,7 @@ O projeto é desenvolvido em **Python**, utilizando as seguintes bibliotecas pri
 
 Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina utilizando o terminal do VS Code.
 
+```
 ### 1. Clonar o Repositório
  
 
@@ -44,6 +45,7 @@ Abra o terminal e clone o projeto:
 ```bash
 git clone https://github.com/lhaislla/pareamento_switab_network_science
 cd pareamento_switab_network_science 
+
 ```
 
 ### Criar o Ambiente Virtual (`venv`)
