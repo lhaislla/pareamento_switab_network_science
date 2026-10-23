@@ -30,22 +30,23 @@ O projeto é desenvolvido em **Python**, utilizando as seguintes bibliotecas pri
 ├── notebooks/          # Jupyter Notebooks com as etapas de análise e algoritmos
 ├── src/                # Códigos-fonte em Python
 ├── README.md           # Documentação do projeto
-└── requirements.txt    # Dependências do projeto
+└── requirements.txt    # Dependências do projeto ´´´
 
 ## ⚙️ Tutorial de Instalação e Execução
 
 Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina utilizando o terminal do VS Code.
 
 ### 1. Clonar o Repositório
+ 
 
 Abra o terminal e clone o projeto:
 
 ```bash
 git clone https://github.com/lhaislla/pareamento_switab_network_science
-cd pareamento_switab_network_science
+cd pareamento_switab_network_science 
 ```
 
-### 2. Criar o Ambiente Virtual (`venv`)
+### Criar o Ambiente Virtual (`venv`)
 
 O ambiente virtual isola as dependências do projeto. Execute o comando correspondente ao seu sistema operacional na raiz do repositório.
 
@@ -61,7 +62,7 @@ python -m venv venv
 python3 -m venv venv
 ```
 
-### 3. Ativar o Ambiente Virtual
+### Ativar o Ambiente Virtual
 
 Para ativar o ambiente criado, utilize o comando correspondente ao seu sistema operacional.
 
@@ -91,7 +92,7 @@ source venv/bin/activate
 
 Você saberá que a ativação foi realizada corretamente quando o nome `(venv)` aparecer no início da linha do terminal.
 
-### 4. Instalar as Dependências
+### Instalar as Dependências
 
 Com o ambiente virtual ativado, instale todas as bibliotecas necessárias listadas no arquivo `requirements.txt`:
 
@@ -100,7 +101,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 5. Como Executar o Projeto
+### Como Executar o Projeto
 
 Para abrir e testar os códigos de análise interativa, inicie o Jupyter Notebook:
 
