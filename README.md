@@ -1,116 +1,133 @@
-# Otimização de Pareamento em Redes de Mentoria: Um Estudo no SWITAB
+# Pareamento SWITAB: Dashboard de Mentoria e Comunidades
 
-Repositório dedicado ao desenvolvimento do projeto de pesquisa voltado à modelagem e otimização do pareamento de mentoras e mentoradas no programa SWITAB, utilizando conceitos de Ciência das Redes e Teoria de Grafos.
+Aplicação em Python para explorar o pareamento entre mentoras e mentoradas e analisar redes de conexão do programa SWITAB. O dashboard permite comparar estratégias de pareamento, aplicar filtros e visualizar métricas e comunidades.
 
-## 📊 Apresentação (Slides)
-Você pode acompanhar a estruturação e os slides da pesquisa através do link oficial no Canva:
-* **[Acessar Apresentação no Canva - 1° entrega](https://canva.link/gdvcyr9c82roieo)**
-* **[Acessar Apresentação no Canva - 2° entrega](https://canva.link/yzhk69u9ns8glf9)**
+## Apresentações
 
-## 🎯 Sobre o Projeto
+- [Apresentação da 1ª entrega](https://canva.link/gdvcyr9c82roieo)
+- [Apresentação da 2ª entrega](https://canva.link/yzhk69u9ns8glf9)
+- [Apresentação da 3ª entrega](https://canva.link/yzhk69u9ns8glf9)
 
-O objetivo deste projeto é modelar o ecossistema de mentoria do SWITAB como um grafo bipartido e aplicar algoritmos de otimização para realizar o pareamento entre mentoras e mentoradas. O modelo busca respeitar restrições estruturais (como mesma instituição, mesmo curso e precedência de período) enquanto maximiza a afinidade, a coesão social e a retenção de estudantes em cursos de tecnologia.
+## Sobre o projeto
 
-### Pergunta de Pesquisa Principal
-> **Como modelar e otimizar a estratégia de pareamento entre mentoras e mentoradas de forma a maximizar a permanência, a coesão da rede e o sentimento de pertencimento de estudantes de tecnologia no SWITAB?**
+O painel de pareamento representa as relações como um grafo bipartido e permite considerar afinidade temática, instituição, curso, período de ingresso e limite de alunas por mentora. Estão disponíveis estratégias aleatória, gulosa, matching de cardinalidade máxima com maior afinidade, algoritmos genéticos e NSGA-II.
 
-## 🛠️ Tecnologias e Bibliotecas Utilizadas
+O painel de comunidades constrói uma rede de conexões ponderada e permite comparar Louvain, Label Propagation assíncrona ponderada, Greedy Modularity e Girvan-Newman, além de consultar métricas como modularidade, densidade, grau e proporção de conexões entre participantes do mesmo turno.
 
-O projeto é desenvolvido em **Python**, utilizando as seguintes bibliotecas principais:
+O projeto é uma ferramenta inicial de apoio à exploração e à análise do SWITAB. As simulações e métricas, por si só, não demonstram retenção, pertencimento nem impacto causal do programa.
 
-* **[Python 3.x](https://www.python.org/):** Linguagem principal de programação.
-* **[Pandas](https://pandas.pydata.org/):** Manipulação, limpeza e estruturação dos dados dos formulários do SWITAB.
-* **[NetworkX](https://networkx.org/):** Construção, manipulação e análise topológica das redes (grafos bipartidos, métricas de centralidade e coeficiente de aglomeração).
-* **[SciPy](https://scipy.org/):** Algoritmos de otimização e resolução de problemas de pareamento ponderado (*Maximum Weight Bipartite Matching*).
-* **[Matplotlib](https://matplotlib.org/) / [Seaborn](https://seaborn.pydata.org/):** Visualização gráfica das redes e distribuições estatísticas.
+### Objetivo da ferramenta
 
-## 📂 Estrutura do Repositório
+> Como representar as conexões entre participantes e explorar estratégias de pareamento e estrutura de comunidades no SWITAB?
+
+### Interpretação dos algoritmos e métricas
+
+- O matching prioriza a maior quantidade possível de pares e, entre soluções com essa cardinalidade, maximiza a soma dos pesos (afinidade com penalidade para regras violadas). Restrições desativadas ou a opção de forçar cobertura podem permitir pares que violem regras; confira os indicadores de validade da alocação.
+- A rede de conexões é construída como dirigida e ponderada. A detecção de comunidades usa uma projeção não direcionada que soma os pesos de conexões recíprocas.
+- Os pesos representam força de conexão. Nas métricas de caminhos mínimos, inclusive betweenness e a remoção de arestas do Girvan-Newman, a distância é calculada como o inverso da força. Louvain, Label Propagation e Greedy Modularity usam os pesos como força.
+- “Conexões no Mesmo Turno” é a porcentagem de arestas direcionadas cujas duas pontas têm turno conhecido e igual. É uma estatística descritiva, não um coeficiente de homofilia ajustado pela distribuição dos turnos.
+- `data/base_conexoes_switab_ficticia.csv` é uma base fictícia de demonstração. Não use resultados dessa base para afirmar propriedades empíricas do SWITAB; configure uma base real, autorizada e documentada para análises do programa.
+
+## Tecnologias
+
+- **Python 3.10 ou superior**
+- **Dash** e **Dash Bootstrap Components** para a aplicação web
+- **Plotly** para visualizações interativas
+- **Pandas** e **NumPy** para manipulação e cálculo de dados
+- **NetworkX** para construção e análise de grafos
+- **python-dotenv** para carregar configurações locais do arquivo `.env`
+
+As dependências estão listadas em [`requirements.txt`](requirements.txt).
+
+## Estrutura do projeto
 
 ```text
-├── data/               # Bases de dados e planilhas anonimizadas (não versionadas)
-├── notebooks/          # Jupyter Notebooks com as etapas de análise e algoritmos
-├── src/                # Códigos-fonte em Python
-├── README.md           # Documentação do projeto
-└── requirements.txt    # Dependências do projeto ´´´
-
-```
-## ⚙️ Tutorial de Instalação e Execução
-
-Siga os passos abaixo para configurar o ambiente de desenvolvimento na sua máquina utilizando o terminal do VS Code.
-
-
-### Clonar o Repositório
- 
-
-Abra o terminal e clone o projeto:
-
-```bash
-git clone https://github.com/lhaislla/pareamento_switab_network_science
-cd pareamento_switab_network_science 
-
-```
-
-### Criar o Ambiente Virtual (`venv`)
-
-O ambiente virtual isola as dependências do projeto. Execute o comando correspondente ao seu sistema operacional na raiz do repositório.
-
-**Windows (Prompt de Comando ou PowerShell):**
-
-```bash
-python -m venv venv
+.
+├── app.py                         # Inicialização do dashboard e callbacks
+├── config/
+│   └── settings.py                # Configurações e variáveis de ambiente
+├── core/
+│   ├── pareamento_engine.py       # Ingestão, pareamento e métricas
+│   └── comunidades_engine.py      # Grafos e detecção de comunidades
+├── components/
+│   └── cards.py                   # Componentes visuais reutilizáveis
+├── pages/
+│   ├── pareamento_page.py         # Layout do painel de pareamento
+│   └── comunidades_page.py        # Layout do painel de comunidades
+├── viz/
+│   ├── graficos_pareamento.py     # Gráficos de pareamento
+│   └── graficos_comunidades.py    # Gráficos de comunidades
+├── data/
+│   ├── SWITAB.csv                 # Base do pareamento
+│   └── base_conexoes_switab_ficticia.csv
+├── .env.example                   # Modelo de configuração local
+├── requirements.txt               # Dependências Python
+└── README.md
 ```
 
-**Linux / macOS:**
+O arquivo `dashboard_switab_pareamento_comunidades.py` contém uma implementação monolítica/alternativa. O ponto de entrada documentado para a estrutura modular é `app.py`.
 
-```bash
-python3 -m venv venv
-```
+## Instalação e execução
 
-### Ativar o Ambiente Virtual
-
-Para ativar o ambiente criado, utilize o comando correspondente ao seu sistema operacional.
-
-**Windows (PowerShell):**
+### 1. Clonar o repositório
 
 ```powershell
-.\venv\Scripts\Activate.ps1
+git clone https://github.com/lhaislla/pareamento_switab_network_science.git
+cd pareamento_switab_network_science
 ```
 
-> **Nota:** Se o PowerShell bloquear a execução do script, execute o comando abaixo antes:
+### 2. Criar e ativar o ambiente virtual
+
+No Windows, usando PowerShell:
 
 ```powershell
-Set-ExecutionPolicy Unrestricted -Scope Process
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
-**Windows (Command Prompt - CMD):**
+Se o PowerShell impedir a ativação, permita scripts locais somente nesta sessão:
 
-```cmd
-venv\Scripts\activate.bat
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.\.venv\Scripts\Activate.ps1
 ```
 
-**Linux / macOS:**
+No macOS ou Linux:
 
 ```bash
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
-Você saberá que a ativação foi realizada corretamente quando o nome `(venv)` aparecer no início da linha do terminal.
+### 3. Instalar as dependências
 
-### Instalar as Dependências
+Com o ambiente virtual ativado:
 
-Com o ambiente virtual ativado, instale todas as bibliotecas necessárias listadas no arquivo `requirements.txt`:
-
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
+```powershell
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-### Como Executar o Projeto
+### 4. Configurar o ambiente
 
-Para abrir e testar os códigos de análise interativa, inicie o Jupyter Notebook:
+O arquivo `.env` é opcional. Para criar uma cópia local do modelo:
 
-```bash
-jupyter notebook
+```powershell
+Copy-Item .env.example .env
 ```
 
-Em seguida, navegue até a pasta `src/` e abra os arquivos de rotina criados para o projeto.
+Não versionar o `.env` caso contenha configurações ou dados locais. Sem esse arquivo, a aplicação utiliza os valores padrão definidos em `config/settings.py`.
+
+
+
+Os caminhos relativos das bases são resolvidos a partir da raiz do projeto. O dashboard exige os arquivos indicados: se uma base estiver ausente, vazia ou inválida, a inicialização informa o erro em vez de substituí-la por dados sintéticos.
+
+### 5. Iniciar o dashboard
+
+Na raiz do repositório, com o ambiente virtual ativado:
+
+```powershell
+python .\app.py
+```
+
+Abra no navegador o endereço exibido no terminal; com a configuração padrão, é <http://127.0.0.1:8050>.
