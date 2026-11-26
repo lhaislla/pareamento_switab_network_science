@@ -363,7 +363,7 @@ def preparar_conjuntos_bipartidos(
     instituicoes_selecionadas: Optional[List[str]] = None,
     cursos_selecionados: Optional[List[str]] = None,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Separa os conjuntos de mentoras (U) e participantes recebidas (V) conforme filtros."""
+    """Separa os conjuntos de mentoras (U) e mentoradas recebidas (V) conforme filtros."""
     df_clean, _ = _validar_e_limpar_dataframe(df, origem="conjuntos_bipartidos")
 
     if instituicoes_selecionadas:

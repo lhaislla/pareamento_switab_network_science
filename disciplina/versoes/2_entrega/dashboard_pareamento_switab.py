@@ -2073,7 +2073,7 @@ app.layout = dbc.Container(
                                     html.P(
                                         [
                                             html.Strong("Nós Conectados: "),
-                                            "quantidade total de participantes ativos na rede formada, separando mentoras (U) e participantes recebidas (V).",
+                                            "quantidade total de participantes ativos na rede formada, separando mentoras (U) e mentoradas recebidas (V).",
                                         ],
                                         style={"fontSize": "0.84rem", "marginBottom": "5px"},
                                     ),

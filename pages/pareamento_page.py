@@ -93,7 +93,7 @@ def criar_painel_pareamento(
                                                 {"label": "AG Elitista", "value": "ag_elitista"},
                                                 {"label": "NSGA-II (Multiobjetivo)", "value": "nsga2"},
                                             ],
-                                            value="nsga2",
+                                            value="aleatoria",
                                             clearable=False,
                                         ),
                                     ],
@@ -519,7 +519,7 @@ def criar_painel_pareamento(
                                         html.P(
                                             [
                                                 html.Strong("Nós Conectados: "),
-                                                "quantidade total de participantes ativos na rede formada, separando mentoras (U) e participantes recebidas (V).",
+                                                "quantidade total de participantes ativos na rede formada, separando mentoras (U) e mentoradas recebidas (V).",
                                             ],
                                             style={"fontSize": "0.84rem", "marginBottom": "5px"},
                                         ),

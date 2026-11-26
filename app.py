@@ -587,7 +587,7 @@ def atualizar_dashboard_pareamento(
     inst_lista = inst_flags_sel if isinstance(inst_flags_sel, list) else ([inst_flags_sel] if inst_flags_sel else ["TODAS"])
     cursos_lista = cursos_flags_sel if isinstance(cursos_flags_sel, list) else ([cursos_flags_sel] if cursos_flags_sel else ["TODOS_CURSOS"])
     tipo_graf = tipo_grafico or "similaridade_espacial"
-    alg = modelo or "nsga2"
+    alg = modelo or "aleatoria"
     limite_par = max(1, int(max_par or CONFIG.limite_conexoes_padrao))
 
     pesos_afinidade = (
