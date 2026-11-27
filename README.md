@@ -6,7 +6,7 @@ Aplicação em Python para explorar o pareamento entre mentoras e mentoradas e a
 
 - [Apresentação da 1ª entrega](https://canva.link/gdvcyr9c82roieo)
 - [Apresentação da 2ª entrega](https://canva.link/yzhk69u9ns8glf9)
-- [Apresentação da 3ª entrega](https://canva.link/yzhk69u9ns8glf9)
+- [Apresentação da 3ª entrega](https://canva.link/2eqjnywxgcnxty0)
 
 ## Sobre o projeto
 
