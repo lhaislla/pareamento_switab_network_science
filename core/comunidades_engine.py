@@ -29,39 +29,6 @@ CRITERIOS_PESO: List[Dict[str, str]] = [
 ]
 
 
-def gerar_dataset_comunidades_sintetico(seed: int = 42) -> pd.DataFrame:
-    """Gera base sintetica de conexoes entre participantes para analise de comunidades."""
-    rng = np.random.default_rng(seed)
-    insts = ["UPE", "UFRPE", "UFPE", "UNICAP", "CESAR School"]
-    turnos = ["Manhã", "Tarde", "Noite", "Integral"]
-    semestres = ["2023.1", "2023.2", "2024.1", "2024.2", "2025.1", "2025.2", "2026.1"]
-    freqs = list(MAPA_FREQUENCIA.keys())
-    n_alunas = 45
-    ids = [f"A{i+1:03d}" for i in range(n_alunas)]
-    linhas = []
-    for idx, aid in enumerate(ids):
-        inst = insts[idx % len(insts)]
-        turno = turnos[(idx + idx // len(insts)) % len(turnos)]
-        sem = semestres[idx % len(semestres)]
-        candidatos = [x for x in ids if x != aid]
-        n_con = int(rng.integers(2, 6))
-        con_escolhidas = sorted(rng.choice(candidatos, size=n_con, replace=False).tolist())
-        linhas.append({
-            "id_aluna": aid,
-            "nome_completo": f"Participante {aid}",
-            "instituicao": inst,
-            "turno": turno,
-            "semestre_atual": sem,
-            "participacao_projetos_p8": "Sim" if idx % 3 == 0 else "Não",
-            "pessoa_mais_conectada": con_escolhidas[0] if con_escolhidas else "",
-            "colegas_conectadas_ids": ";".join(con_escolhidas),
-            "confianca_tecnica_1_a_5": int(rng.integers(2, 6)),
-            "conforto_compartilhar_1_a_5": int(rng.integers(2, 6)),
-            "frequencia_interacao": str(rng.choice(freqs)),
-        })
-    return pd.DataFrame(linhas)
-
-
 def carregar_dados_comunidades(caminho_csv: str) -> Tuple[pd.DataFrame, str]:
     """Carrega a base de comunidades do disco e falha se ela não puder ser usada."""
     if not caminho_csv:

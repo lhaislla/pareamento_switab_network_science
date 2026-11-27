@@ -719,7 +719,7 @@ def atualizar_grafo_e_cards_comunidades(
         exibir_setas=(exibir_setas_val == "SIM"),
     )
 
-    titulo_secao_metricas = f"Métricas Topológicas e de Comunidade ({base_titulo} — {nome_alg})"
+    titulo_secao_metricas = f"Métricas Topológicas e de Comunidade ({base_titulo} - {nome_alg})"
 
     cards = [
         criar_card_metrica("Total de Alunas (Nós)", metricas["num_nos"]),

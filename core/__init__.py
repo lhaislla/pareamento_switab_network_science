@@ -15,7 +15,6 @@ from core.pareamento_engine import (
     executar_gulosa_afinidade_balanceada,
     executar_nsga2,
     executar_pareamento_peso_maximo_bipartido,
-    gerar_dataset_sintetico,
     gerar_rede_aleatoria,
     normalizar_chave_comparacao,
     preparar_conjuntos_bipartidos,
@@ -31,7 +30,6 @@ from core.comunidades_engine import (
     construir_grafo_completo,
     detectar_comunidades,
     extrair_subgrafo_filtrado,
-    gerar_dataset_comunidades_sintetico,
     gerar_resumo_comunidades,
 )
 
@@ -50,7 +48,6 @@ __all__ = [
     "executar_gulosa_afinidade_balanceada",
     "executar_nsga2",
     "executar_pareamento_peso_maximo_bipartido",
-    "gerar_dataset_sintetico",
     "gerar_rede_aleatoria",
     "normalizar_chave_comparacao",
     "preparar_conjuntos_bipartidos",
@@ -64,6 +61,5 @@ __all__ = [
     "construir_grafo_completo",
     "detectar_comunidades",
     "extrair_subgrafo_filtrado",
-    "gerar_dataset_comunidades_sintetico",
     "gerar_resumo_comunidades",
 ]
